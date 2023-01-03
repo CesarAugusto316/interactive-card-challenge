@@ -1,27 +1,35 @@
-# InteractiveCard
+# Frontend Mentor - Interactive card details form
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+![Design preview for the Interactive card details form coding challenge](./src/assets/design/desktop-preview.jpg)
 
-## Development server
+## Welcome! 👋
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Thanks for checking out this front-end coding challenge.
 
-## Code scaffolding
+[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**To do this challenge, you need a good understanding of HTML, CSS and JavaScript.**
 
-## Build
+## The challenge
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Your challenge is to build out this interactive card details form and get it looking as close to the design as possible.
 
-## Running unit tests
+You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Your users should be able to:
 
-## Running end-to-end tests
+- Fill in the form and see the card details update in real-time
+- Receive error messages when the form is submitted if:
+  - Any input field is empty
+  - The card number, expiry date, or CVC fields are in the wrong format
+- View the optimal layout depending on their device's screen size
+- See hover, active, and focus states for interactive elements on the page
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
 
-## Further help
+### Expected behaviour
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Update the details on the card as the user fills in the fields
+- Validate the form fields when the form is submitted
+- If there are no errors, display the completed state
+- Reset the form when the user clicks "Continue" on the completed state
