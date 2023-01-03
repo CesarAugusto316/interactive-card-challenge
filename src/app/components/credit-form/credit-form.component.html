@@ -1,36 +1,93 @@
-<form [formGroup]="form" (submit)="onFormSubmit()">
-  <fieldset class="flex flex-col gap-7 p-7">
+<form class="flex-initial w-full" [formGroup]="form" (submit)="onFormSubmit()">
+  <fieldset class="flex flex-col gap-8 p-7">
     <ul class="flex flex-col gap-4">
       <li class="flex flex-col">
-        <label for="card-holder-name" class="uppercase font-medium">
+        <label
+          for="card-holder-name"
+          class="uppercase font-medium text-xs mb-2 w-full"
+        >
           card holder name
         </label>
         <input
           id="card-holder-name"
           name="card-holder-name"
-          class="focus:outline-none p-2 rounded-lg border"
+          class="focus:outline-none p-2 rounded-lg border focus:ring-1 ring-blue-violet w-full"
           type="text"
-          placeholder="e.g your name"
+          placeholder="e.g. your name"
           formControlName="cardHolderName"
         />
       </li>
       <li class="flex flex-col">
-        <label for="card-number" class="uppercase font-medium">
+        <label
+          for="card-number"
+          class="uppercase font-medium text-xs mb-2 w-full"
+        >
           card number
         </label>
         <input
           id="card-number"
           name="card-holder-name"
-          class="focus:outline-none p-2 rounded-lg border"
+          class="focus:outline-none p-2 rounded-lg border focus:ring-1 ring-blue-violet w-full"
           type="number"
-          placeholder="e.g your card"
+          placeholder="e.g. your card"
           formControlName="cardNumber"
         />
+      </li>
+
+      <!-- Expiration date nested formGroup -->
+      <li class="flex gap-2" formGroupName="expirationDate">
+        <section class="flex flex-auto w-1/2 gap-2">
+          <div class="flex-initial w-1/2 flex flex-col">
+            <label
+              for="month"
+              class="uppercase font-medium text-xs mb-2 w-full"
+            >
+              Exp. Date
+            </label>
+            <input
+              id="month"
+              name="month"
+              class="focus:outline-none p-2 rounded-lg border focus:ring-1 ring-blue-violet w-full"
+              type="number"
+              placeholder="MM"
+              formControlName="month"
+            />
+          </div>
+          <div class="flex-initial w-1/2 flex flex-col">
+            <label for="year" class="uppercase font-medium text-xs mb-2 w-full">
+              (mm/yy)
+            </label>
+            <input
+              id="year"
+              name="year"
+              class="focus:outline-none p-2 rounded-lg border focus:ring-1 ring-blue-violet w-full"
+              type="number"
+              placeholder="YY"
+              formControlName="year"
+            />
+          </div>
+        </section>
+
+        <section class="flex-initial w-1/2 flex flex-col">
+          <label for="cvc" class="uppercase font-medium text-xs mb-2 w-full">
+            cvc
+          </label>
+          <input
+            id="cvc"
+            name="cvc"
+            class="focus:outline-none p-2 rounded-lg border focus:ring-1 ring-blue-violet w-full"
+            type="number"
+            placeholder="cvc"
+            formControlName="cvc"
+          />
+        </section>
       </li>
     </ul>
 
     <button
-      class="bg-very-dark-violet text-slate-50 rounded-lg p-2 font-bold"
+      [disabled]="!form.valid"
+      [ngClass]="!form.valid ? 'bg-slate-300' : ''"
+      class="bg-very-dark-violet text-slate-50 rounded-lg p-2 font-bold w-full"
       type="submit"
     >
       Confirm
