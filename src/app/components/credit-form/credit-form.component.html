@@ -1,1 +1,39 @@
-<p>credit-form works!</p>
+<form [formGroup]="form" (submit)="onFormSubmit()">
+  <fieldset class="flex flex-col gap-7 p-7">
+    <ul class="flex flex-col gap-4">
+      <li class="flex flex-col">
+        <label for="card-holder-name" class="uppercase font-medium">
+          card holder name
+        </label>
+        <input
+          id="card-holder-name"
+          name="card-holder-name"
+          class="focus:outline-none p-2 rounded-lg border"
+          type="text"
+          placeholder="e.g your name"
+          formControlName="cardHolderName"
+        />
+      </li>
+      <li class="flex flex-col">
+        <label for="card-number" class="uppercase font-medium">
+          card number
+        </label>
+        <input
+          id="card-number"
+          name="card-holder-name"
+          class="focus:outline-none p-2 rounded-lg border"
+          type="number"
+          placeholder="e.g your card"
+          formControlName="cardNumber"
+        />
+      </li>
+    </ul>
+
+    <button
+      class="bg-very-dark-violet text-slate-50 rounded-lg p-2 font-bold"
+      type="submit"
+    >
+      Confirm
+    </button>
+  </fieldset>
+</form>
