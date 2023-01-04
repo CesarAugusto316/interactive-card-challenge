@@ -1,13 +1,42 @@
 <!-- card-front -->
-<img
-  class="flex-auto h-52 shadow-xl"
-  src="../../../assets/images/bg-card-front.png"
-  alt="card-front"
-/>
+<figure class="flex-auto h-52 shadow-xl relative">
+  <div
+    class="absolute text-slate-50 font-semibold tracking-widest w-full h-full p-5"
+  >
+    <div class="flex flex-col justify-between h-full">
+      <img
+        class="h-11 w-20"
+        src="../../../assets/images/card-logo.svg"
+        alt=""
+      />
+      <!-- cardNumber -->
+      <p class="text-3xl text-center">0901802032</p>
+      <div class="flex justify-between text-sm font-normal">
+        <!-- cardHolderName -->
+        <p class="uppercase">Alicia Freire</p>
+        <!-- expirationDate -->
+        <p class="uppercase">3/24</p>
+      </div>
+    </div>
+  </div>
+  <img
+    class="w-full h-full"
+    src="../../../assets/images/bg-card-front.png"
+    alt="card-front"
+  />
+</figure>
 
 <!-- card-back -->
-<img
-  class="flex-auto h-52 relative translate-x-16 shadow-xl"
-  src="../../../assets/images/bg-card-back.png"
-  alt="card-back"
-/>
+<figure class="flex-auto h-52 relative translate-x-16 shadow-xl">
+  <!-- cvc -->
+  <p
+    class="absolute text-slate-50 text-base font-medium top-[90px] right-12 tracking-widest"
+  >
+    1232
+  </p>
+  <img
+    class="w-full h-full"
+    src="../../../assets/images/bg-card-back.png"
+    alt="card-back"
+  />
+</figure>

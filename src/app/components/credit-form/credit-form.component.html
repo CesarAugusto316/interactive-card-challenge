@@ -1,93 +1,216 @@
 <form class="flex-initial w-full" [formGroup]="form" (submit)="onFormSubmit()">
-  <fieldset class="flex flex-col gap-8 p-7">
-    <ul class="flex flex-col gap-4">
-      <li class="flex flex-col">
+  <fieldset class="flex flex-col gap-9 p-7">
+    <ul class="flex flex-col gap-8">
+      <!-- cardHolderName -->
+      <li class="flex flex-col relative">
         <label
           for="card-holder-name"
-          class="uppercase font-medium text-xs mb-2 w-full"
+          class="uppercase font-medium text-xs mb-1 w-full"
         >
           card holder name
         </label>
         <input
           id="card-holder-name"
           name="card-holder-name"
-          class="focus:outline-none p-2 rounded-lg border focus:ring-1 ring-blue-violet w-full"
+          [ngClass]="
+            cardHolderName?.invalid && cardHolderName?.touched
+              ? 'ring-warning'
+              : 'ring-blue-violet'
+          "
+          class="focus:outline-none p-2 rounded-lg border focus:ring-1 w-full"
           type="text"
           placeholder="e.g. your name"
           formControlName="cardHolderName"
         />
+        <!-- validation messages -->
+        <div
+          class="absolute top-[60px]"
+          *ngIf="cardHolderName?.invalid && cardHolderName?.touched"
+        >
+          <span
+            *ngIf="cardHolderName?.errors?.['required']"
+            class="text-warning text-xs"
+          >
+            Can't be blank
+          </span>
+          <span
+            *ngIf="cardHolderName?.errors?.['pattern']"
+            class="text-warning text-xs"
+          >
+            Must be only letters
+          </span>
+          <span
+            *ngIf="cardHolderName?.errors?.['minLength']"
+            class="text-warning text-xs"
+          >
+            Must be at least 3 characters.
+          </span>
+        </div>
       </li>
-      <li class="flex flex-col">
+
+      <!-- cardNumber -->
+      <li class="flex flex-col relative">
         <label
           for="card-number"
-          class="uppercase font-medium text-xs mb-2 w-full"
+          class="uppercase font-medium text-xs mb-1 w-full"
         >
           card number
         </label>
         <input
           id="card-number"
           name="card-holder-name"
-          class="focus:outline-none p-2 rounded-lg border focus:ring-1 ring-blue-violet w-full"
+          [ngClass]="
+            cardNumber?.invalid && cardNumber?.touched
+              ? 'ring-warning'
+              : 'ring-blue-violet'
+          "
+          class="focus:outline-none py-2 px-3 rounded-lg border focus:ring-1 w-full"
           type="number"
           placeholder="e.g. your card"
           formControlName="cardNumber"
         />
+        <!-- validation messages -->
+        <div
+          class="absolute top-[60px]"
+          *ngIf="cardNumber?.invalid && cardNumber?.touched"
+        >
+          <span
+            *ngIf="cardNumber?.errors?.['required']"
+            class="text-warning text-xs"
+          >
+            Can't be blank
+          </span>
+          <span
+            *ngIf="cardNumber?.errors?.['min']"
+            class="text-warning text-xs"
+          >
+            Must be at least 10 characters.
+          </span>
+          <span
+            *ngIf="cardNumber?.errors?.['max']"
+            class="text-warning text-xs"
+          >
+            Must not be greater than 10.
+          </span>
+        </div>
       </li>
 
       <!-- Expiration date nested formGroup -->
       <li class="flex gap-2" formGroupName="expirationDate">
         <section class="flex flex-auto w-1/2 gap-2">
-          <div class="flex-initial w-1/2 flex flex-col">
+          <div class="flex-initial w-1/2 flex flex-col relative">
             <label
               for="month"
-              class="uppercase font-medium text-xs mb-2 w-full"
+              class="uppercase font-medium text-xs mb-1 w-full"
             >
               Exp. Date
             </label>
             <input
               id="month"
               name="month"
+              [ngClass]="
+                month?.invalid && month?.touched
+                  ? 'ring-warning'
+                  : 'ring-blue-violet'
+              "
               class="focus:outline-none p-2 rounded-lg border focus:ring-1 ring-blue-violet w-full"
               type="number"
               placeholder="MM"
               formControlName="month"
             />
+            <!-- validation messages -->
+            <div
+              class="absolute top-[60px]"
+              *ngIf="month?.invalid && month?.touched"
+            >
+              <span
+                *ngIf="month?.errors?.['required']"
+                class="text-warning text-xs"
+              >
+                Empty
+              </span>
+              <span *ngIf="month?.errors?.['min']" class="text-warning text-xs">
+                Must be at least 1 characters.
+              </span>
+              <span *ngIf="month?.errors?.['max']" class="text-warning text-xs">
+                Must not be greater than 12.
+              </span>
+            </div>
           </div>
-          <div class="flex-initial w-1/2 flex flex-col">
-            <label for="year" class="uppercase font-medium text-xs mb-2 w-full">
+          <div class="flex-initial w-1/2 flex flex-col relative">
+            <label for="year" class="uppercase font-medium text-xs mb-1 w-full">
               (mm/yy)
             </label>
             <input
               id="year"
               name="year"
-              class="focus:outline-none p-2 rounded-lg border focus:ring-1 ring-blue-violet w-full"
+              [ngClass]="
+                year?.invalid && year?.touched
+                  ? 'ring-warning'
+                  : 'ring-blue-violet'
+              "
+              class="focus:outline-none p-2 rounded-lg border focus:ring-1 w-full"
               type="number"
               placeholder="YY"
               formControlName="year"
             />
+            <!-- validation messages -->
+            <div
+              class="absolute top-[60px]"
+              *ngIf="year?.invalid && year?.touched"
+            >
+              <span
+                *ngIf="year?.errors?.['required']"
+                class="text-warning text-xs"
+              >
+                Empty
+              </span>
+              <span *ngIf="year?.errors?.['min']" class="text-warning text-xs">
+                Must be at least 4 characters.
+              </span>
+            </div>
           </div>
         </section>
 
-        <section class="flex-initial w-1/2 flex flex-col">
-          <label for="cvc" class="uppercase font-medium text-xs mb-2 w-full">
+        <section class="flex-initial w-1/2 flex flex-col relative">
+          <label for="cvc" class="uppercase font-medium text-xs mb-1 w-full">
             cvc
           </label>
           <input
             id="cvc"
             name="cvc"
-            class="focus:outline-none p-2 rounded-lg border focus:ring-1 ring-blue-violet w-full"
+            [ngClass]="
+              cvc?.invalid && cvc?.touched ? 'ring-warning' : 'ring-blue-violet'
+            "
+            class="focus:outline-none p-2 rounded-lg border focus:ring-1 w-full"
             type="number"
             placeholder="cvc"
             formControlName="cvc"
           />
+          <!-- validation messages -->
+          <div class="absolute top-[60px]" *ngIf="cvc?.invalid && cvc?.touched">
+            <span
+              *ngIf="cvc?.errors?.['required']"
+              class="text-warning text-xs"
+            >
+              Can't be blank
+            </span>
+            <span *ngIf="cvc?.errors?.['min']" class="text-warning text-xs">
+              Must be at least 4.
+            </span>
+          </div>
         </section>
       </li>
     </ul>
 
     <button
       [disabled]="!form.valid"
-      [ngClass]="!form.valid ? 'bg-slate-300' : ''"
-      class="bg-very-dark-violet text-slate-50 rounded-lg p-2 font-bold w-full"
+      [ngClass]="
+        !form.valid
+          ? 'bg-slate-300/80 cursor-not-allowed text-slate-500/70'
+          : 'bg-very-dark-violet text-slate-50'
+      "
+      class="rounded-lg p-2 font-bold w-full"
       type="submit"
     >
       Confirm
