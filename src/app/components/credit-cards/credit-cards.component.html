@@ -10,12 +10,16 @@
         alt=""
       />
       <!-- cardNumber -->
-      <p class="text-3xl text-center">0901802032</p>
+      <p class="text-3xl text-center">{{ creditForm.cardNumber }}</p>
       <div class="flex justify-between text-sm font-normal">
         <!-- cardHolderName -->
-        <p class="uppercase">Alicia Freire</p>
+        <p class="uppercase">{{ creditForm.cardHolderName }}</p>
         <!-- expirationDate -->
-        <p class="uppercase">3/24</p>
+        <p class="uppercase">
+          {{ creditForm.expirationDate.month }}/{{
+            creditForm.expirationDate.year
+          }}
+        </p>
       </div>
     </div>
   </div>
@@ -32,7 +36,7 @@
   <p
     class="absolute text-slate-50 text-base font-medium top-[90px] right-12 tracking-widest"
   >
-    1232
+    {{ creditForm.expirationDate.cvc }}
   </p>
   <img
     class="w-full h-full"

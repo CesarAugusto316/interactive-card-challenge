@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { FormCredit } from 'src/app/models/form.model';
+import { AppState } from 'src/app/store/store';
 
 
 @Component({
@@ -6,6 +9,11 @@ import { Component } from '@angular/core';
   templateUrl: './credit-cards.component.html',
 })
 export class CreditCardsComponent {
-  creditNumber = 0;
-  cvNumber = 0;
+  creditForm!: FormCredit;
+
+  constructor(private store: Store<AppState>) {
+    store.subscribe(appState => {
+      this.creditForm = appState.creditForm;
+    });
+  }
 }

@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { FormCredit } from 'src/app/models/form.model';
+import { AppState } from 'src/app/store/store';
+import * as actions from '../../store/form.actions';
 
 
 const currentYear = new Date().getFullYear();
@@ -22,6 +26,12 @@ export class CreditFormComponent {
     })
   });
 
+  constructor(private store: Store<AppState>) {
+    this.form.valueChanges.subscribe(values => {
+      store.dispatch(actions.update(values as FormCredit));
+    });
+  }
+
   get cardNumber() {
     return this.form.get('cardNumber');
   }
@@ -42,16 +52,10 @@ export class CreditFormComponent {
     return this.form.get('expirationDate.cvc');
   }
 
-  // constructor() {
-  //   this.form.valueChanges.subscribe((values) => {
-  //     console.log(values);
-  //   });
-  // }
-
   onFormSubmit(): void {
-    if (this.form.valid) {
-      console.log(this.form.value);
-      this.form.reset();
+    if (this.form.invalid) {
+      return;
     }
+    this.form.reset();
   }
 }
