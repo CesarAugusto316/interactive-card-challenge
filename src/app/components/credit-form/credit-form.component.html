@@ -1,4 +1,8 @@
-<form class="flex-initial w-full" [formGroup]="form" (submit)="onFormSubmit()">
+<form
+  class="flex-initial w-full"
+  [formGroup]="formCredit"
+  (submit)="onFormSubmit()"
+>
   <fieldset class="flex flex-col gap-9 p-7">
     <ul class="flex flex-col gap-8">
       <!-- cardHolderName -->
@@ -204,9 +208,9 @@
     </ul>
 
     <button
-      [disabled]="!form.valid"
+      [disabled]="!formCredit.valid"
       [ngClass]="
-        !form.valid
+        !formCredit.valid
           ? 'bg-slate-300/80 cursor-not-allowed text-slate-500/70'
           : 'bg-very-dark-violet text-slate-50'
       "

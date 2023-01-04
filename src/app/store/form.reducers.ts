@@ -4,7 +4,7 @@ import { FormCredit } from '../models/form.model';
 import { update } from './form.actions';
 
 
-const initialState = new FormCredit();
+export const initialState = new FormCredit();
 
 export const formReducer = createReducer(
   initialState,
