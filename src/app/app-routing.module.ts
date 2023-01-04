@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreditFormComponent } from './components/credit-form/credit-form.component';
 
 // pages
-import { FormPageComponent } from './pages/form-page/form-page.component';
 import { SucessFormPageComponent } from './pages/sucess-form-page/sucess-form-page.component';
 
-
 const routes: Routes = [
-  { path: '', component: FormPageComponent },
+  { path: '', component: CreditFormComponent },
   { path: 'sucess-form', component: SucessFormPageComponent }
 ];
 

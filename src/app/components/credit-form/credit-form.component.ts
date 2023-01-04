@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FormCredit } from 'src/app/models/form.model';
 import { AppState } from 'src/app/store/store';
@@ -23,7 +24,7 @@ export class CreditFormComponent implements OnInit {
     }>;
   }>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private router: Router) {
     const { cardHolderName, cardNumber, expirationDate: { cvc, month, year } } = formCredit.initialState;
 
     this.formCredit = new FormGroup({
@@ -39,7 +40,7 @@ export class CreditFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.formCredit.valueChanges.subscribe(values => {
-      this.store.dispatch(actions.update(values as FormCredit));
+      this.store.dispatch(actions.updateForm(values as FormCredit));
     });
   }
 
@@ -63,10 +64,11 @@ export class CreditFormComponent implements OnInit {
     return this.formCredit.get('expirationDate.cvc');
   }
 
-  onFormSubmit(): void {
+  onConfirmForm(): void {
     if (this.formCredit.invalid) {
       return;
     }
-    this.formCredit.reset();
+    this.router.navigateByUrl('sucess-form');
+    // this.formCredit.reset();
   }
 }

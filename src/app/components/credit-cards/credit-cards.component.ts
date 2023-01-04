@@ -12,8 +12,8 @@ export class CreditCardsComponent {
   creditForm!: FormCredit;
 
   constructor(private store: Store<AppState>) {
-    store.subscribe(appState => {
-      this.creditForm = appState.creditForm;
+    store.subscribe(({ creditForm }) => {
+      this.creditForm = creditForm;
     });
   }
 }
